@@ -25,15 +25,7 @@ jobs:
 #      path: /Users/20932750/autoscaler/autoscaler-helm-cluster/helm
 #      values:
 #        autocalerNamespace: ausc-sm
-#  - name: create-pull-secret
-#    params:
-#      name: image-pull
-#      namespace: ausc-sm
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - synai-autoscaler
+
 #
 #  - name: helm-upgrade
 #    params:
@@ -51,13 +43,7 @@ jobs:
 #        target: cpu-loader-mock
 #  - name: create-pull-secret
 #    params:
-#      name: image-pull
-#      namespace: ausc-victim-first
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - demo-server-se
+#
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-victim-second
@@ -74,13 +60,7 @@ jobs:
 #        target: cpu-loader-mock
 #  - name: create-pull-secret
 #    params:
-#      name: image-pull
-#      namespace: ausc-victim-second
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - demo-server-se
+
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-victim-third
@@ -96,14 +76,7 @@ jobs:
 #        scaleType: sm-storage
 #        target: monitor-mock
 #  - name: create-pull-secret
-#    params:
-#      name: image-pull
-#      namespace: ausc-victim-third
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - demo-server-se
+
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-victim-fourth
@@ -119,14 +92,7 @@ jobs:
 #        scaleType: abyss
 #        target: monitor-mock
 #  - name: create-pull-secret
-#    params:
-#      name: image-pull
-#      namespace: ausc-victim-fourth
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - demo-server-se
+
   - name: helm-upgrade
     params:
       namespace: ausc-victim-third
@@ -146,12 +112,6 @@ jobs:
   - name: create-pull-secret
     params:
       name: image-pull
-      namespace: ausc-victim-third
-      user: tuz_sbt_ci_synai
-      password: Synai@01ci
-      server: dzo.sw.sbc.space
-      serviceAccounts:
-        - monitor-mock-se
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-victim-fourth
@@ -168,14 +128,7 @@ jobs:
 #        target: monitor-mock
 #        seName: monitor-mock-se-second
 #  - name: create-pull-secret
-#    params:
-#      name: image-pull
-#      namespace: ausc-victim-fourth
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - monitor-mock-se-second
+
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-victim-second
@@ -193,13 +146,7 @@ jobs:
 #        utilizationType: cpu
 #  - name: create-pull-secret
 #    params:
-#      name: image-pull
-#      namespace: ausc-victim-first
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - cpu-loader-mock
+#
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-victim-second
@@ -217,13 +164,7 @@ jobs:
 #        utilizationType: memory
 #  - name: create-pull-secret
 #    params:
-#      name: image-pull
-#      namespace: ausc-victim-second
-#      user: tuz_sbt_ci_synai
-#      password: Synai@01ci
-#      server: dzo.sw.sbc.space
-#      serviceAccounts:
-#        - cpu-loader-mock
+#
 #  - name: helm-upgrade
 #    params:
 #      namespace: ausc-sm
