@@ -1,0 +1,7 @@
+.idea
+**/reports
+**/results
+**/allure-results
+**/temp-distrib
+temp
+distrib.zip

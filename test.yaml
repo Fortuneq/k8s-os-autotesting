@@ -1,0 +1,475 @@
+jobs:
+#  - name: create-namespace
+#    params:
+#      name: ausc-victim-first
+#  - name: create-namespace
+#    params:
+#      name: ausc-victim-second
+#  - name: create-namespace
+#    params:
+#      name: ausc-victim-third
+#  - name: create-namespace
+#    params:
+#      name: ausc-victim-fourth
+#  - name: create-namespace
+#    params:
+#      name: ausc-sm
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-sm
+#      releaseName: operator-cluster
+#      install: true
+#      wait: true
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/autoscaler/autoscaler-helm-cluster/helm
+#      values:
+#        autocalerNamespace: ausc-sm
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-sm
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - synai-autoscaler
+#
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-first
+#      releaseName: demo-server
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/GolandProjects/client-server/helm
+#      values:
+#        namespace: ausc-victim-first
+#        serviceName: demo-server-1
+#        scaleType: utilization
+#        target: cpu-loader-mock
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-first
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - demo-server-se
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-second
+#      releaseName: demo-server
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/GolandProjects/client-server/helm
+#      values:
+#        namespace: ausc-victim-second
+#        serviceName: demo-server-2
+#        scaleType: utilization
+#        target: cpu-loader-mock
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-second
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - demo-server-se
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-third
+#      releaseName: demo-server
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/GolandProjects/client-server/helm
+#      values:
+#        namespace: ausc-victim-third
+#        serviceName: demo-server-3
+#        scaleType: sm-storage
+#        target: monitor-mock
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-third
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - demo-server-se
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-fourth
+#      releaseName: demo-server
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/GolandProjects/client-server/helm
+#      values:
+#        namespace: ausc-victim-fourth
+#        serviceName: demo-server-4
+#        scaleType: abyss
+#        target: monitor-mock
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-fourth
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - demo-server-se
+  - name: helm-upgrade
+    params:
+      namespace: ausc-victim-third
+      releaseName: mock-monitor
+      install: true
+      wait: false
+      atomic: false
+      timeout: 60s
+      path: /Users/20932750/newopertator/ausc_demo/helm
+      values:
+        runAs: k8s
+        namespace: ausc-victim-third
+        scaleType: prometheus
+        target: monitor-mock
+        seName: monitor-mock-se
+        quota: true
+  - name: create-pull-secret
+    params:
+      name: image-pull
+      namespace: ausc-victim-third
+      user: tuz_sbt_ci_synai
+      password: Synai@01ci
+      server: dzo.sw.sbc.space
+      serviceAccounts:
+        - monitor-mock-se
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-fourth
+#      releaseName: mock-monitor
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/newopertator/ausc_demo/helm
+#      values:
+#        runAs: k8s
+#        namespace: ausc-victim-fourth
+#        scaleType: abyss
+#        target: monitor-mock
+#        seName: monitor-mock-se-second
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-fourth
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - monitor-mock-se-second
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-second
+#      releaseName: cpu-load-generator-first
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/cpu_load_generator/helm
+#      values:
+#        runAs: k8s
+#        namespace: ausc-victim-first
+#        scaleType: utilization
+#        target: cpu-loader-mock
+#        utilizationType: cpu
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-first
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - cpu-loader-mock
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-victim-second
+#      releaseName: cpu-load-generator-second
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/cpu_load_generator/helm
+#      values:
+#        runAs: k8s
+#        namespace: ausc-victim-second
+#        scaleType: utilization
+#        target: cpu-loader-mock
+#        utilizationType: memory
+#  - name: create-pull-secret
+#    params:
+#      name: image-pull
+#      namespace: ausc-victim-second
+#      user: tuz_sbt_ci_synai
+#      password: Synai@01ci
+#      server: dzo.sw.sbc.space
+#      serviceAccounts:
+#        - cpu-loader-mock
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-sm
+#      releaseName: operator-adapter
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 60s
+#      path: /Users/20932750/autoscaler/helm
+#      values:
+#        namespace: ausc-sm
+#        triggers:
+#          prometheus:
+#            host: monitor-mock.ausc-victim-third
+#          abyssStorage:
+#            host: monitor-mock.ausc-victim-fourth
+#==============================================================================================================================
+#        runAs: k8s
+#        imagePullSecrets:
+#          - image-pull
+#        watchedNamespaces: ausc-sm
+#        enableCRDTemplates: false
+#        secretMountingType: secret
+#        serverCerts:
+#          secretMountingType: secret
+#        config:
+#        triggers:
+#          prometheus:
+#            enable: true
+#            isPrometheus: true
+#            host: http://monitor-mock.ausc-loaders
+#            port: 80
+#          abyssStorage:
+#            enable: true
+#            host: http://monitor-mock.ausc-loaders
+#            projectName: ausc
+#            port: 80
+#          utilization:
+#              enable: true
+#  - name: helm-upgrade
+#    params:
+#      namespace: ausc-sm
+#      releaseName: adapter
+#      install: true
+#      wait: false
+#      atomic: false
+#      timeout: 120s
+#      path: /Users/20932750/synai/autoscaler-adapter/helm
+#      values:
+#        runAs: k8s
+#        namespace: ausc-sm
+#        serverCerts:
+#          secretMountingType: secret
+tests:
+#  - name: T01
+#    type: t01.T01Suite
+#    params:
+#      appName: autoscaler-operator
+#      namespace: ausc-sm
+#      workload: deployment
+#  - name: T02
+#    type: t02.T02Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-loaders
+#      workload: deployment
+#  - name: T07
+#    type: t07.T07Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim-third
+#      workload: deployment
+#      lowerValue: 2
+#      upperValue: 3
+#  - name: T08
+#    type: t08.T08Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim-third
+#      workload: deployment
+#      podCount: 1
+#  - name: T07
+#    type: t07.T07Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim-third
+#      workload: deployment
+#      lowerValue: 8
+#      upperValue: 9
+#  - name: T08
+#    type: t08.T08Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim-third
+#      workload: deployment
+#      podCount: 4
+#  - name: T07
+#    type: t07.T07Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim-third
+#      workload: deployment
+#      lowerValue: 16
+#      upperValue: 17
+#  - name: T08
+#    type: t08.T08Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim-third
+#      workload: deployment
+#      podCount: 8
+  - name: T07
+    type: t07.T07Suite
+    params:
+      appName: monitor-mock
+      namespace: ausc-victim-third
+      workload: deployment
+      lowerValue: 20
+      upperValue: 21
+  - name: T08
+    type: t08.T08Suite
+    params:
+      appName: monitor-mock
+      namespace: ausc-victim-third
+      workload: deployment
+      podCount: 10
+#  - name: T05
+#    type: t05.T05Suite
+#    params:
+#      appName: cpu-loader-mock
+#      loadNamespace: ausc-victim-first
+#      workload: deployment
+#      cpuLoad: 10
+#      timeout: 60
+#  - name: T08
+#    type: t08.T08Suite
+#    params:
+#      appName: cpu-loader-mock
+#      namespace: ausc-victim-first
+#      workload: deployment
+#      podCount: 2
+#
+#  - name: T05
+#    type: t05.T05Suite
+#    params:
+#      appName: cpu-loader-mock
+#      loadNamespace: ausc-victim-first
+#      workload: deployment
+#      cpuLoad: 30
+#      timeout: 60
+#  - name: T08
+#    type: t08.T08Suite
+#    params:
+#      appName: demo-server
+#      namespace: ausc-victim-first
+#      workload: deployment
+#      podCount: 4
+
+#  - name: T05
+#    type: t05.T05Suite
+#    params:
+#      appName: cpu-loader-mock
+#      loadNamespace: ausc-victim-first
+#      workload: deployment
+#      cpuLoad: 70
+#      timeout: 60
+#  - name: T08
+#    type: t08.T08Suite
+#    params:
+#      appName: demo-server
+#      namespace: ausc-victim-first
+#      workload: deployment
+#      podCount: 7
+#  - name: T09
+#    type: t09.T09Suite
+#    params:
+#      appName: cpu-loader-mock
+#      loadNamespace: ausc-victim-second
+#      workload: deployment
+#      memload: 50
+#      timeout: 60
+#  - name: T03-3
+#    type: t03.T03Suite
+#    params:
+#      appName: monitor-mock
+#      namespace: ausc-victim
+#      workload: deployment
+#      podCount: 10
+#  - name: T04
+#    type: t04.T04Suite
+#    params:
+#      loadAppName: cpu-loader-mock
+#      testAppName: demo-server
+#      loadNamespace: ausc-victim-first
+#      testNamespace: ausc-victim-first
+#      workload: deployment
+#      podCount: 1
+finalizers:
+#  - name: helm-uninstall
+#    params:
+#      namespace:  k8s-monitoring
+#      releaseName:  metrics-server
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace:  k8s-monitoring
+#      releaseName: autoscaler-adapter
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace:  k8s-monitoring
+#      releaseName: autoscaler-cluster-conf
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace: synai-autoscaler
+#      releaseName: autoscaler-cluster
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace: ausc-sm
+#      releaseName: operator-adapter
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace: ausc-sm
+#      releaseName: adapter
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace: ausc-sm
+#      releaseName: operator
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace: ausc-victim
+#      releaseName: mock
+#      timeout: 60s
+#  - name: helm-uninstall
+#    params:
+#      namespace: ausc-sm
+#      releaseName: operator-cluster
+#      timeout: 60s
+#  - name: delete-namespace
+#    params:
+#      name: ausc-victim
+#  - name: delete-namespace
+#    params:
+#      name: ausc-sm
